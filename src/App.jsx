@@ -460,7 +460,7 @@ h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
 
 /* ── HERO ── */
 .rr-hero {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 64px);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center; padding: 3rem 1.5rem;
@@ -659,17 +659,20 @@ h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
   max-width: 1200px; 
   margin: 0 auto; 
   padding: 2rem 1rem 4rem; 
+  margin-top: 64px;
 }
 
 @media (min-width: 768px) {
   .rr-section {
     padding: 3rem 2rem 6rem;
+    margin-top: 64px;
   }
 }
 
 @media (min-width: 1024px) {
   .rr-section {
     padding: 4rem 3rem 8rem;
+    margin-top: 64px;
   }
 }
 
