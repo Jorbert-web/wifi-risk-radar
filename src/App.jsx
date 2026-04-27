@@ -697,6 +697,34 @@ h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
   max-width: 100%;
 }
 
+/* Code-style section titles responsiveness */
+.rr-section-title {
+  font-size: clamp(0.9rem, 3.5vw, 1.25rem) !important;
+  font-family: var(--font-mono) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  color: var(--cyber-blue) !important;
+  text-transform: none !important;
+  white-space: normal !important;
+  word-break: break-all !important;
+  line-height: 1.4 !important;
+}
+
+@media (min-width: 768px) {
+  .rr-section-title {
+    font-size: clamp(1rem, 2.5vw, 1.5rem) !important;
+    word-break: break-word !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-section-title {
+    font-size: clamp(1.1rem, 2vw, 1.75rem) !important;
+    white-space: nowrap !important;
+    word-break: normal !important;
+  }
+}
+
 .rr-section-title::after {
   content: '';
   position: absolute; bottom: -8px; left: 0;
@@ -1406,7 +1434,30 @@ table.rr-table {
   z-index: 2;
 }
 
-.rr-empty { text-align: center; padding: 3rem; color: var(--text3); font-family: var(--font-mono); font-size: 0.85rem; }
+.rr-empty { 
+  text-align: center; 
+  padding: 2rem 1rem; 
+  color: var(--text3); 
+  font-family: var(--font-mono); 
+  font-size: 0.8rem; 
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .rr-empty {
+    padding: 2.5rem 2rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-empty {
+    padding: 3rem;
+    font-size: 0.85rem;
+  }
+}
 
 /* ── RESPONSIVE RESOURCES GRID ── */
 .rr-res-grid { 
