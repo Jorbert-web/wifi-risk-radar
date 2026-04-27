@@ -699,32 +699,32 @@ h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
 
 /* Enhanced section titles without double slashes */
 .rr-section-title {
-  font-size: clamp(1.25rem, 4vw, 2rem) !important;
+  font-size: clamp(1.5rem, 5vw, 2.5rem) !important;
   font-family: var(--font-mono) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
   color: var(--cyber-blue) !important;
   text-transform: uppercase !important;
   white-space: normal !important;
   word-break: break-word !important;
-  line-height: 1.3 !important;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3) !important;
+  line-height: 1.2 !important;
+  text-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
 }
 
 @media (min-width: 768px) {
   .rr-section-title {
-    font-size: clamp(1.5rem, 3vw, 2.25rem) !important;
+    font-size: clamp(1.75rem, 4vw, 2.75rem) !important;
     word-break: break-word !important;
-    letter-spacing: 0.1em !important;
+    letter-spacing: 0.12em !important;
   }
 }
 
 @media (min-width: 1024px) {
   .rr-section-title {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+    font-size: clamp(2rem, 4.5vw, 3rem) !important;
     white-space: nowrap !important;
     word-break: normal !important;
-    letter-spacing: 0.12em !important;
+    letter-spacing: 0.15em !important;
   }
 }
 
@@ -2208,7 +2208,7 @@ export default function WiFiRiskRadar() {
             <div className="rr-card rr-table-wrap">
               {history.length === 0 ? (
                 <div className="rr-empty">
-                  // NO_RECORDS_FOUND — Conduct your first vulnerability scan to populate this log.
+                  NO RECORDS FOUND — Conduct your first vulnerability scan to populate this log.
                 </div>
               ) : (
                 <table className="rr-table">
