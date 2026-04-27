@@ -1784,15 +1784,7 @@ export default function WiFiRiskRadar() {
       .catch(() => setIspHint(null));
   }, [isp]);
 
-  /* fetch history when page changes */
-  useEffect(() => {
-    if (page === "history") {
-      fetch(`${API_BASE}/history`)
-        .then(r => r.json())
-        .then(setHistory)
-        .catch(() => setHistory([]));
-    }
-  }, [page]);
+  /* History is now managed locally - no server fetch needed */
 
   const pick = useCallback((key, val) => {
     setAnswers(prev => ({ ...prev, [key]: val }));
@@ -2068,20 +2060,25 @@ export default function WiFiRiskRadar() {
             {step === 7 && (
               <div className="rr-card" key="step7">
                 <p className="rr-q-label">REVIEW YOUR CONFIGURATION</p>
-                <div className="rr-table-wrapper">
-                  <table className="rr-table" style={{ marginBottom: "1.5rem" }}>
+                <div className="rr-table-wrapper" style={{ marginBottom: "1.5rem" }}>
+                  <table className="rr-table">
                     <thead>
                       <tr>
-                        <th>PARAMETER</th>
-                        <th>YOUR VALUE</th>
+                        <th style={{ minWidth: "200px" }}>PARAMETER</th>
+                        <th style={{ minWidth: "150px" }}>YOUR VALUE</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><td className="mono">ISP</td><td>{isp}</td></tr>
+                      <tr>
+                        <td className="mono" style={{ minWidth: "200px" }}>ISP</td>
+                        <td style={{ minWidth: "150px" }}>{isp}</td>
+                      </tr>
                       {QUESTIONS.map(q => (
                         <tr key={q.key}>
-                          <td className="mono">{q.label}</td>
-                          <td>{answers[q.key] || <span style={{ color: "var(--red)" }}>— NOT SET</span>}</td>
+                          <td className="mono" style={{ minWidth: "200px" }}>{q.label}</td>
+                          <td style={{ minWidth: "150px" }}>
+                            {answers[q.key] || <span style={{ color: "var(--red)" }}>— NOT SET</span>}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
