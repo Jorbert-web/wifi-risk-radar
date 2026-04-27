@@ -212,7 +212,7 @@ body::before {
   filter: blur(0.5px);
 }
 
-/* ── PROFESSIONAL TYPOGRAPHY SYSTEM ── */
+/* ── RESPONSIVE TYPOGRAPHY SYSTEM ── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-head);
   font-weight: 700;
@@ -220,12 +220,41 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
-h5 { font-size: 1.125rem; }
-h6 { font-size: 1rem; }
+/* Base font sizes - Desktop */
+h1 { font-size: clamp(2rem, 4vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 2rem); }
+h4 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
+h5 { font-size: clamp(1rem, 1.5vw, 1.25rem); }
+h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
+
+/* Responsive breakpoints */
+:root {
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --large: 1440px;
+}
+
+/* Container system */
+.rr-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .rr-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-container {
+    padding: 0 3rem;
+  }
+}
 
 .text-gradient {
   background: linear-gradient(135deg, var(--vsc) 0%, var(--cyber-purple) 50%, var(--cyber-pink) 100%);
@@ -264,16 +293,69 @@ h6 { font-size: 1rem; }
   animation: hologram-flicker 2s ease-in-out infinite;
 }
 
-/* ── CLEAN NAVIGATION ── */
+/* ── RESPONSIVE NAVIGATION ── */
 .rr-nav {
   position: sticky; top: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2rem; height: 64px;
+  padding: 0 1rem; height: 64px;
   background: rgba(15, 15, 35, 0.8);
   backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .rr-nav {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-nav {
+    padding: 0 3rem;
+  }
+}
+
+/* Mobile menu button */
+.rr-mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.rr-mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 767px) {
+  .rr-mobile-menu-btn {
+    display: block;
+  }
+  
+  .rr-nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(15, 15, 35, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+  
+  .rr-nav-links.mobile-open {
+    display: flex;
+  }
 }
 
 .rr-nav::before {
@@ -556,9 +638,34 @@ h6 { font-size: 1rem; }
   border-color: var(--neon-cyan);
 }
 
-/* ── SECTION ── */
-.rr-section { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem 6rem; }
-.rr-section-head { margin-bottom: 2.5rem; }
+/* ── RESPONSIVE SECTION ── */
+.rr-section { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 2rem 1rem 4rem; 
+}
+
+@media (min-width: 768px) {
+  .rr-section {
+    padding: 3rem 2rem 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-section {
+    padding: 4rem 3rem 8rem;
+  }
+}
+
+.rr-section-head { 
+  margin-bottom: 2rem; 
+}
+
+@media (min-width: 768px) {
+  .rr-section-head {
+    margin-bottom: 2.5rem;
+  }
+}
 .rr-section-title {
   font-family: var(--font-head); font-size: 1.75rem; font-weight: 700;
   color: var(--text); margin-bottom: 1rem;
@@ -586,12 +693,13 @@ h6 { font-size: 1rem; }
   font-weight: 400;
 }
 
-/* ── ENHANCED READABILITY CARDS ── */
+/* ── RESPONSIVE CARDS ── */
 .rr-card {
   background: rgba(15, 15, 35, 0.85);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px; padding: 2.5rem;
+  border-radius: 12px; 
+  padding: 1.5rem;
   margin-bottom: 1.5rem;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.4),
@@ -600,6 +708,20 @@ h6 { font-size: 1rem; }
   position: relative;
   overflow: hidden;
   z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .rr-card {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-card {
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .rr-card::before {
@@ -642,32 +764,31 @@ h6 { font-size: 1rem; }
   opacity: 1;
 }
 
-.rr-card:hover::before {
-  opacity: 1;
-}
-
-/* ── STEP INDICATOR ── */
+/* ── RESPONSIVE STEP INDICATOR ── */
 .rr-steps {
   display: flex; align-items: center; gap: 0;
-  margin-bottom: 2.5rem; overflow-x: auto; padding-bottom: 8px;
-  position: relative;
+  margin-bottom: 1.5rem; overflow-x: auto; padding-bottom: 8px;
 }
 
-.rr-steps::before {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, var(--cyber-blue), transparent);
-  opacity: 0.3;
+@media (min-width: 768px) {
+  .rr-steps {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-steps {
+    margin-bottom: 2.5rem;
+  }
 }
 
 .rr-step {
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 16px; border-radius: 8px;
-  font-family: var(--font-mono); font-size: 0.7rem;
-  color: var(--text3); cursor: pointer; 
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap; flex-shrink: 0;
+  flex: 1; min-width: 50px; max-width: 100px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 0.5rem 0.25rem; border-radius: 8px;
+  background: transparent; border: 1px solid transparent;
+  color: var(--text3); font-size: 0.65rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s; text-align: center;
   border: 1px solid transparent;
   position: relative;
   z-index: 2;
@@ -820,15 +941,23 @@ h6 { font-size: 1rem; }
 .rr-opt-desc { font-size: 0.72rem; color: var(--text3); font-family: var(--font-mono); }
 .rr-opt.sel .rr-opt-desc { color: rgba(255,255,255,0.5); }
 
-/* ── ENHANCED READABILITY FORM CONTROLS ── */
+/* ── RESPONSIVE FORM CONTROLS ── */
 .rr-text-input {
-  padding: 0.875rem 1.25rem; border-radius: 8px;
+  padding: 0.75rem 1rem; border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(15, 15, 35, 0.9);
-  font-family: var(--font-body); font-size: 0.95rem; color: var(--text);
+  font-family: var(--font-body); font-size: 0.9rem; color: var(--text);
   outline: none; transition: all 0.2s; width: 100%;
   position: relative; z-index: 10;
   font-weight: 400;
 }
+
+@media (min-width: 768px) {
+  .rr-text-input {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
 .rr-text-input:focus { 
   border-color: rgba(99, 102, 241, 0.5); 
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); 
@@ -836,21 +965,62 @@ h6 { font-size: 1rem; }
 }
 .rr-text-input::placeholder { color: var(--text3); font-weight: 400; }
 
-.rr-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-.rr-field-wrap { display: flex; flex-direction: column; gap: 8px; }
-.rr-field-label { font-size: 0.875rem; color: var(--text2); font-weight: 500; letter-spacing: 0.025em; }
+.rr-row2 { 
+  display: grid; 
+  gap: 1rem; 
+  margin-bottom: 1.5rem; 
+  grid-template-columns: 1fr;
+}
 
-/* ── ENHANCED READABILITY BUTTONS ── */
+@media (min-width: 768px) {
+  .rr-row2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.rr-field-wrap { display: flex; flex-direction: column; gap: 6px; }
+
+@media (min-width: 768px) {
+  .rr-field-wrap {
+    gap: 8px;
+  }
+}
+
+.rr-field-label { 
+  font-size: 0.8rem; 
+  color: var(--text2); 
+  font-weight: 500; 
+  letter-spacing: 0.025em; 
+}
+
+@media (min-width: 768px) {
+  .rr-field-label {
+    font-size: 0.875rem;
+  }
+}
+
+/* ── RESPONSIVE BUTTONS ── */
 .rr-btn-primary {
-  padding: 0.875rem 2rem; border-radius: 8px; border: none;
+  padding: 0.75rem 1.5rem; border-radius: 8px; border: none;
   background: rgba(99, 102, 241, 0.9);
   cursor: pointer;
-  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.9rem;
   color: #ffffff;
   transition: all 0.2s ease; 
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: 6px;
   position: relative; z-index: 10;
   letter-spacing: 0.025em;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .rr-btn-primary {
+    padding: 0.875rem 2rem;
+    font-size: 0.95rem;
+    gap: 8px;
+    width: auto;
+  }
 }
 
 .rr-btn-primary::before {
@@ -872,13 +1042,25 @@ h6 { font-size: 1rem; }
 .rr-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .rr-btn-ghost {
-  padding: 0.875rem 2rem; border-radius: 8px;
+  padding: 0.75rem 1.5rem; border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.3); background: transparent;
-  font-family: var(--font-body); font-size: 0.95rem; font-weight: 500;
+  font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
   color: var(--text); cursor: pointer; 
   transition: all 0.2s ease;
   position: relative; z-index: 10;
   letter-spacing: 0.025em;
+  width: 100%;
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .rr-btn-ghost {
+    padding: 0.875rem 2rem;
+    font-size: 0.95rem;
+    width: auto;
+  }
 }
 
 .rr-btn-ghost::before {
@@ -942,22 +1124,50 @@ h6 { font-size: 1rem; }
   50% { opacity: 0.5; }
 }
 
-.rr-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.5rem; }
+.rr-actions { 
+  display: flex; 
+  gap: 0.75rem; 
+  flex-wrap: wrap; 
+  margin-top: 1rem; 
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .rr-actions {
+    gap: 10px;
+    margin-top: 1.5rem;
+    flex-direction: row;
+  }
+}
 .rr-error { color: var(--cyber-red); font-size: 0.82rem; margin-top: 0.75rem; font-family: var(--font-mono); }
 
-/* ── IMPRESSIVE SCORE RING ── */
+/* ── RESPONSIVE SCORE RING ── */
 .rr-ring-wrap { 
   display: flex; flex-direction: column; align-items: center; 
   position: relative;
 }
 
 .rr-ring { 
-  position: relative; width: 200px; height: 200px; margin: 0 auto 2rem;
+  position: relative; width: 150px; height: 150px; margin: 0 auto 1.5rem;
   filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
 }
 
+@media (min-width: 768px) {
+  .rr-ring {
+    width: 180px; height: 180px;
+    margin: 0 auto 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-ring {
+    width: 200px; height: 200px;
+    margin: 0 auto 2rem;
+  }
+}
+
 .rr-ring svg { 
-  width: 200px; height: 200px; 
+  width: 100%; height: 100%; 
   transform: rotate(-90deg);
   filter: drop-shadow(0 0 10px currentColor);
 }
@@ -1111,12 +1321,26 @@ table.rr-table { width: 100%; border-collapse: collapse; }
 
 .rr-empty { text-align: center; padding: 3rem; color: var(--text3); font-family: var(--font-mono); font-size: 0.85rem; }
 
-/* ── IMPRESSIVE RESOURCES GRID ── */
+/* ── RESPONSIVE RESOURCES GRID ── */
 .rr-res-grid { 
   display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-  gap: 1.5rem;
+  grid-template-columns: 1fr; 
+  gap: 1rem;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .rr-res-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-res-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
 }
 
 .rr-res-card {
