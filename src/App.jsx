@@ -1358,14 +1358,25 @@ table.rr-table {
 
 .rr-table th {
   background: rgba(0, 212, 255, 0.1); color: var(--cyber-blue);
-  padding: 0.6rem 0.8rem; text-align: left; font-weight: 600;
+  padding: 0.6rem 0.8rem; text-align: left; font-weight: 700;
   border-bottom: 2px solid var(--cyber-blue);
   white-space: nowrap;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
   .rr-table th {
     padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rr-table th {
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
   }
 }
 
