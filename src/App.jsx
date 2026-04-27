@@ -697,31 +697,34 @@ h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
   max-width: 100%;
 }
 
-/* Code-style section titles responsiveness */
+/* Enhanced section titles without double slashes */
 .rr-section-title {
-  font-size: clamp(0.9rem, 3.5vw, 1.25rem) !important;
+  font-size: clamp(1.25rem, 4vw, 2rem) !important;
   font-family: var(--font-mono) !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.05em !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
   color: var(--cyber-blue) !important;
-  text-transform: none !important;
+  text-transform: uppercase !important;
   white-space: normal !important;
-  word-break: break-all !important;
-  line-height: 1.4 !important;
+  word-break: break-word !important;
+  line-height: 1.3 !important;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3) !important;
 }
 
 @media (min-width: 768px) {
   .rr-section-title {
-    font-size: clamp(1rem, 2.5vw, 1.5rem) !important;
+    font-size: clamp(1.5rem, 3vw, 2.25rem) !important;
     word-break: break-word !important;
+    letter-spacing: 0.1em !important;
   }
 }
 
 @media (min-width: 1024px) {
   .rr-section-title {
-    font-size: clamp(1.1rem, 2vw, 1.75rem) !important;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
     white-space: nowrap !important;
     word-break: normal !important;
+    letter-spacing: 0.12em !important;
   }
 }
 
@@ -1970,7 +1973,7 @@ export default function WiFiRiskRadar() {
         <div className={`rr-page${page === "scan" ? " show" : ""}`}>
           <div className="rr-section">
             <div className="rr-section-head">
-              <div className="rr-section-title">// ASSESSMENT_HUD</div>
+              <div className="rr-section-title">ASSESSMENT HUD</div>
               <p className="rr-section-sub">Complete all 6 configuration checks. Hover ⓘ for threat intelligence context.</p>
             </div>
 
@@ -2122,7 +2125,7 @@ export default function WiFiRiskRadar() {
           {result ? (
             <div className="rr-section">
               <div className="rr-section-head">
-                <div className="rr-section-title">// VULNERABILITY_DASHBOARD</div>
+                <div className="rr-section-title">VULNERABILITY DASHBOARD</div>
                 <p className="rr-section-sub">
                   Scan completed {new Date(result.timestamp).toLocaleString()} — {result.isp} / {result.deviceModel}
                 </p>
@@ -2199,7 +2202,7 @@ export default function WiFiRiskRadar() {
         <div className={`rr-page${page === "history" ? " show" : ""}`}>
           <div className="rr-section">
             <div className="rr-section-head">
-              <div className="rr-section-title">// SECURITY_AUDIT_TRAIL</div>
+              <div className="rr-section-title">SECURITY AUDIT TRAIL</div>
               <p className="rr-section-sub">All scan records are stored in-memory for the session. Track your remediation progress over time.</p>
             </div>
             <div className="rr-card rr-table-wrap">
@@ -2248,7 +2251,7 @@ export default function WiFiRiskRadar() {
         <div className={`rr-page${page === "resources" ? " show" : ""}`}>
           <div className="rr-section">
             <div className="rr-section-head">
-              <div className="rr-section-title">// THREAT_INTELLIGENCE</div>
+              <div className="rr-section-title">THREAT INTELLIGENCE</div>
               <p className="rr-section-sub">Understanding the attack vectors your router configuration may expose.</p>
             </div>
             <div className="rr-res-grid">
