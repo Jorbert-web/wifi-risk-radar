@@ -1829,6 +1829,19 @@ export default function WiFiRiskRadar() {
       
       const data = await res.json();
       setResult(data);
+      
+      // Add to audit log
+      const auditEntry = {
+        id: Date.now(),
+        timestamp: new Date().toISOString(),
+        isp: isp,
+        deviceModel: device || "Unknown Device",
+        score: data.score,
+        tier: data.tier,
+        answers: { ...answers }
+      };
+      setHistory(prev => [auditEntry, ...prev]);
+      
       setPage("results");
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 120);
     } catch (error) {
@@ -2055,23 +2068,25 @@ export default function WiFiRiskRadar() {
             {step === 7 && (
               <div className="rr-card" key="step7">
                 <p className="rr-q-label">REVIEW YOUR CONFIGURATION</p>
-                <table className="rr-table" style={{ marginBottom: "1.5rem" }}>
-                  <thead>
-                    <tr>
-                      <th>PARAMETER</th>
-                      <th>YOUR VALUE</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td className="mono">ISP</td><td>{isp}</td></tr>
-                    {QUESTIONS.map(q => (
-                      <tr key={q.key}>
-                        <td className="mono">{q.label}</td>
-                        <td>{answers[q.key] || <span style={{ color: "var(--red)" }}>— NOT SET</span>}</td>
+                <div className="rr-table-wrapper">
+                  <table className="rr-table" style={{ marginBottom: "1.5rem" }}>
+                    <thead>
+                      <tr>
+                        <th>PARAMETER</th>
+                        <th>YOUR VALUE</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      <tr><td className="mono">ISP</td><td>{isp}</td></tr>
+                      {QUESTIONS.map(q => (
+                        <tr key={q.key}>
+                          <td className="mono">{q.label}</td>
+                          <td>{answers[q.key] || <span style={{ color: "var(--red)" }}>— NOT SET</span>}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
 
                 {error && <p className="rr-error">{error}</p>}
 
