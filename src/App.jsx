@@ -701,14 +701,16 @@ h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
 .rr-section-title {
   font-size: clamp(1.5rem, 5vw, 2.5rem) !important;
   font-family: var(--font-mono) !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
   letter-spacing: 0.1em !important;
   color: var(--cyber-blue) !important;
   text-transform: uppercase !important;
   white-space: normal !important;
   word-break: break-word !important;
   line-height: 1.2 !important;
-  text-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 
 @media (min-width: 768px) {
@@ -716,6 +718,7 @@ h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
     font-size: clamp(1.75rem, 4vw, 2.75rem) !important;
     word-break: break-word !important;
     letter-spacing: 0.12em !important;
+    font-weight: 900 !important;
   }
 }
 
@@ -725,6 +728,7 @@ h6 { font-size: clamp(0.875rem, 1.25vw, 1rem); }
     white-space: nowrap !important;
     word-break: normal !important;
     letter-spacing: 0.15em !important;
+    font-weight: 900 !important;
   }
 }
 
