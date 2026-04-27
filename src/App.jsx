@@ -1832,7 +1832,11 @@ export default function WiFiRiskRadar() {
         tier: data.tier,
         answers: { ...answers }
       };
-      setHistory(prev => [auditEntry, ...prev]);
+      setHistory(prev => {
+        const newHistory = [auditEntry, ...prev];
+        console.log('Audit log updated:', newHistory);
+        return newHistory;
+      });
       
       setPage("results");
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 120);
@@ -2163,7 +2167,7 @@ export default function WiFiRiskRadar() {
               <div className="rr-actions">
                 <button className="rr-btn-teal" onClick={() => window.print()}>⬇ DOWNLOAD PDF REPORT</button>
                 <button className="rr-btn-primary" onClick={resetScan}>NEW SCAN</button>
-                <button className="rr-btn-ghost" onClick={() => setPage("history")}>VIEW AUDIT LOG</button>
+                <button className="rr-btn-ghost" onClick={() => setPage("history")}>VIEW AUDIT LOG ({history.length})</button>
               </div>
             </div>
           ) : (
